@@ -79,7 +79,6 @@ The program with the fix is [paycheck_fixed.cob](paycheck_fixed.cob).
 cobc -x paycheck_fixed.cob -o dist/paycheck_fixed 
 ```
 
-
 # Open Cobol
 
 OpenCobol is used to build BestBooks COBOL.
@@ -100,9 +99,124 @@ To compile a cobol source file,
 
 The manual is available at https://edoras.sdsu.edu/doc/opencobol.pdf and https://gnucobol.sourceforge.io/guides/OpenCOBOL%20Programmers%20Guide.pdf
 
-# Build the COBOL Example
+# Bestbooks for COBOL
 
-    cobc -x main.cob lib/node-exec*.cbl
+ The first example is reading from a LEDGER file and display the contents of the LEDGER. To build the executable,
+
+```
+2023-01-0100001Cash           0100000000  Initial deposit           
+2023-01-0500002Supplies       0000000010  Purchase of office supplies   
+2023-01-1000003Cash           0050000000  Sale of goods             
+2023-12-3100004Equipment      0000000100  Purchase of equipment  
+
+```
+
+    cobc -x bestbooks_list_ledger.cob -o dist/bestbooks_list_ledger
+
+In the FILE CONTROL section, we define the file to read,
+
+```
+FILE-CONTROL.
+           SELECT LEDGER
+               ASSIGN TO "LEDGER.DAT"
+                   ORGANIZATION IS LINE SEQUENTIAL.
+```
+
+we must also define the format of the file,
+
+```
+DATA DIVISION.
+       FILE SECTION.
+            FD LEDGER.
+            01 ENTRIES.
+               02 TRANSACTION-DATE  PIC A(10).
+               02 TRANSACTION-ID    PIC 99999.
+               02 ACCOUNT           PIC A(15).
+               02 DEBIT             PIC 9999V99.
+               02 CREDIT            PIC 9999V99.
+               02 DESCRIPTION      PIC A(30).
+```
+
+and formats the output,
+
+```
+WORKING-STORAGE SECTION.
+      * print format of the ledger
+            01 LEDGER-RECORD.
+               02 PRT-TRANSACTION-DATE  PIC A(10).
+               02 FILLER                PIC X.
+               02 PRT-TRANSACTION-ID    PIC 9(5).
+               02 FILLER                PIC X.
+               02 PRT-ACCOUNT           PIC A(15).
+               02 FILLER                PIC X.
+               02 PRT-DESSCRIPTION      PIC A(30).
+               02 FILLER                PIC X.
+               02 PRT-DEBIT             PIC $Z,999.99.
+               02 FILLER                PIC X(5).
+               02 PRT-CREDIT            PIC $Z,999.99.
+```
+
+which is displayed as,
+
+```
+2023-01-01 00001 Cash            Initial deposit                $  100.00     $  000.00
+2023-01-05 00002 Supplies        Purchase of office supplies    $  000.00     $  010.00
+2023-01-10 00003 Cash            Sale of goods                  $  050.00     $  000.00
+2023-12-31 00004 Equipment       Purchase of equipment          $  000.00     $  100.00
+2023-12-31 00004 Equipment       Purchase of equipment          $  000.00     $  100.00
+```
+
+however, the last entry is being duplicated? To fix this problem, put the DISPLAY inside an IF dierctive testing for the end of file. 
+
+```
+IF NOT EOF THEN
+                PERFORM PRINT-LEDGER
+            END-IF.
+```
+
+and now displays correctly,
+
+```
+2023-01-01 00001 Cash            Initial deposit                $  100.00     $  000.00
+2023-01-05 00002 Supplies        Purchase of office supplies    $  000.00     $  010.00
+2023-01-10 00003 Cash            Sale of goods                  $  050.00     $  000.00
+2023-12-31 00004 Equipment       Purchase of equipment          $  000.00     $  100.00
+```
+
+then we need to keep track of the total debits and credits, by creating a display for the totals and computing temporary variables for each ledger entry,
+
+```
+ * temporary variables in computational usage.
+            01 TOTAL-DEBITS    PIC 9(4)V99 USAGE COMP.
+            01 TOTAL-CREDITS   PIC 9(4)V99 USAGE COMP.
+ * the display format
+01 TOTAL.
+                02 FILLER               PIC X(64).
+                02 PRT-TOTAL-DEBITS     PIC $Z,999.99.
+                02 FILLER               PIC X(5).
+                02 PRT-TOTAL-CREDITS    PIC $Z,999.99.
+ * the compute total function
+COMPUTE-TOTALS.
+            COMPUTE TOTAL-DEBITS = DEBIT + TOTAL-DEBITS
+            COMPUTE TOTAL-CREDITS = CREDIT + TOTAL-CREDITS
+            .
+ * the display totals function
+PRINT-TOTALS.
+            MOVE TOTAL-DEBITS TO PRT-TOTAL-DEBITS
+            MOVE TOTAL-CREDITS TO PRT-TOTAL-CREDITS
+            DISPLAY TOTAL.
+```
+
+the output will result in,
+
+```
+2023-01-01 00001 Cash            Initial deposit                $  100.00     $  000.00
+2023-01-05 00002 Supplies        Purchase of office supplies    $  000.00     $  010.00
+2023-01-10 00003 Cash            Sale of goods                  $  050.00     $  000.00
+2023-12-31 00004 Equipment       Purchase of equipment          $  000.00     $  100.00
+                                                                $  150.00     $  110.00
+```
+
 
 ## GNUCobol Command Line Options
 
