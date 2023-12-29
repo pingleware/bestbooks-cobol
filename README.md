@@ -73,7 +73,7 @@ Donald    Trump           40.0 28.0 $1,120.00 $183.68  $78.40  $69.44     $**788
 Patrick   Ingle           40.0 12.0 $  480.00  $78.72  $33.60  $29.76     $**337.92
 ```
 
-The program with the fix is paycheck_fixed.cob.
+The program with the fix is [paycheck_fixed.cob](paycheck_fixed.cob).
 
 # Open Cobol
 
