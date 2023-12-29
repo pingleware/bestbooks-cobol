@@ -9,8 +9,10 @@ https://youtu.be/u9M52sAnrOs?si=NEzNogKgm06YljFo
 The [paycheck.cob](paycheck.cob) is a working example that reads the TIMECARDS.DAT file and displays pay ledger,
 
 ```
-Charlie   Martin          41.0 28.0$,162.00 $190.56  $81.34  $72.04     $**818.06
+Charlie   Martin          41.0 10.0 $415.00  $68.06  $29.05  $25.73     $**292.16
 Terry     Lacy            32.0 15.0 $480.00  $78.72  $33.60  $29.76     $**337.92
+Donald    Trump           40.0 05.0 $200.00  $32.80  $14.00  $12.40     $**140.80
+Patrick   Ingle           40.0 12.0 $480.00  $78.72  $33.60  $29.76     $**337.92
 ```
 
 to compile,
