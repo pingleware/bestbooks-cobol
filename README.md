@@ -229,7 +229,17 @@ the output will result in,
 
 ### Adding an entry to the Ledger
 
-In file [bestbooks_add_entry.cob](bestbooks_add_entry.cob), will add a new entry to the ledger file of [LEDGER.DAT](LEDGER.DAT),
+In file [bestbooks_add_entry.cob](bestbooks_add_entry.cob), will add a new entry to the ledger file of [LEDGER.DAT](LEDGER.DAT), and using [bestbooks_list_ledger.cob](bestbooks_list_ledger.cob), 
+
+```
+2023-01-01 00001 Cash            Initial deposit                $  100.00     $  000.00
+2023-01-05 00002 Supplies        Purchase of office supplies    $  000.00     $  010.00
+2023-01-10 00003 Cash            Sale of goods                  $  050.00     $  000.00
+2023-12-31 00004 Equipment       Purchase of equipment          $  000.00     $  100.00
+2023122917 00001 Cash            Investor Deposit               $  100.00     $  000.00
+2023122917 00001 Cash            Investor Deposit               $  100.00     $  000.00
+                                                                $  350.00     $  110.00
+```
 
 
 ## GNUCobol Command Line Options
