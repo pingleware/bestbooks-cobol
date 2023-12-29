@@ -241,6 +241,34 @@ In file [bestbooks_add_entry.cob](bestbooks_add_entry.cob), will add a new entry
                                                                 $  350.00     $  110.00
 ```
 
+Obtaining the current date and formatting in the form of YYYY-MM-DD involves declaring working variables,
+
+```
+WORKING-STORAGE SECTION.
+            01 WS-TODAY             PIC X(10).
+            01 WS-YEAR              PIC X(4).
+            01 WS-MONTH             PIC X(2).
+            01 WS-DAY               PIC X(2).
+            01 WS-FORMATTED-DATE    PIC X(12).
+
+MOVE FUNCTION CURRENT-DATE(1:8) TO WS-TODAY
+
+            MOVE WS-TODAY(1:4) TO WS-YEAR.
+            MOVE WS-TODAY(5:2) TO WS-MONTH.
+            MOVE WS-TODAY(7:2) TO WS-DAY.
+
+            MOVE WS-YEAR  TO WS-FORMATTED-DATE(1:4).
+            MOVE "-"       TO WS-FORMATTED-DATE(5:1).
+            MOVE WS-MONTH TO WS-FORMATTED-DATE(6:2).
+            MOVE "-"       TO WS-FORMATTED-DATE(8:1).
+            MOVE WS-DAY   TO WS-FORMATTED-DATE(9:2).
+```
+
+The variable WS-FORMATTED-DATE contains the current date in the form of YYYY-MM-DD.
+
+Using the ACCEPT to obtain command line arguments and converting a STRING to NUMBER using NUMVAL function to determine if the AMOUNT should be a DEBIT (positive) or CREDIT (negative).
+
+Reading the TRANSACTIONS and counting the ENTRIES to determine the next TRANSACTION ID.
 
 ## GNUCobol Command Line Options
 
