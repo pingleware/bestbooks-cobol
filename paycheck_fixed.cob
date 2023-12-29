@@ -38,7 +38,8 @@
                02 PRT-HOURS-WORKED     PIC 99.9.
                02 FILLER               PIC X.
                02 PRT-PAY-RATE         PIC 99.9.
-               02 PRT-GROSS-PAY        PIC $,$$9.99.
+               02 FILLER               PIC X.
+               02 PRT-GROSS-PAY        PIC $Z,999.99.
                02 PRT-FED-TAX          PIC $,$$9.99.
                02 PRT-STATE-TAX        PIC $,$$9.99.
                02 PRT-FICA-TAX         PIC $,$$9.99.

@@ -27,7 +27,53 @@ to execute,
 ./paychecks
 ```
 
-the result shown above
+the result shown above.
+
+There is a bug, if you change a hourly rate to calculate a gross pay of $1,000 or more, the output is not display. For example, give Donald Trump a raise to $28 per hour,
+
+```
+Donald    Trump          40028
+```
+
+you see,
+
+```
+Charlie   Martin          41.0 10.0 $415.00  $68.06  $29.05  $25.73     $**292.16
+Terry     Lacy            32.0 15.0 $480.00  $78.72  $33.60  $29.76     $**337.92
+Donald    Trump           40.0 28.0$,120.00 $183.68  $78.40  $69.44     $**788.48
+Patrick   Ingle           40.0 12.0 $480.00  $78.72  $33.60  $29.76     $**337.92
+```
+
+there is no thousands indicator.
+
+To fix this, change the picture clause
+
+```
+ 02 PRT-GROSS-PAY        PIC $,$$9.99.
+```
+
+to
+
+```
+02 PRT-GROSS-PAY        PIC $Z,999.99.
+```
+
+and added a spacing between pay rate and gross pay,
+
+```
+02 FILLER               PIC X.
+```
+
+which states prefix the dollar symbol and zero suppress values less than 1,000, the result is,
+
+```
+Charlie   Martin          41.0 10.0 $  415.00  $68.06  $29.05  $25.73     $**292.16
+Terry     Lacy            32.0 15.0 $  480.00  $78.72  $33.60  $29.76     $**337.92
+Donald    Trump           40.0 28.0 $1,120.00 $183.68  $78.40  $69.44     $**788.48
+Patrick   Ingle           40.0 12.0 $  480.00  $78.72  $33.60  $29.76     $**337.92
+```
+
+The program with the fix is paycheck_fixed.cob.
 
 # Open Cobol
 
