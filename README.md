@@ -4,6 +4,14 @@ A COBOL version of BestBooks CORE.
 
 https://youtu.be/u9M52sAnrOs?si=NEzNogKgm06YljFo
 
+To build the COBOL files, use the script,
+
+```
+./build.sh FILENAME
+```
+
+where FILENAME is the COBOL root filename.
+
 ## Working Example
 
 The [paycheck.cob](paycheck.cob) is a working example that reads the TIMECARDS.DAT file and displays pay ledger,
@@ -97,7 +105,7 @@ To compile a cobol source file,
 
 ## OpenCobol Manual
 
-The manual is available at https://edoras.sdsu.edu/doc/opencobol.pdf and https://gnucobol.sourceforge.io/guides/OpenCOBOL%20Programmers%20Guide.pdf
+The manual is available at [https://edoras.sdsu.edu/doc/opencobol.pdf ](https://edoras.sdsu.edu/doc/opencobol.pdf)and [https://gnucobol.sourceforge.io/guides/OpenCOBOL%20Programmers%20Guide.pdf](https://gnucobol.sourceforge.io/guides/OpenCOBOL%20Programmers%20Guide.pdf)
 
 # Bestbooks for COBOL
 
