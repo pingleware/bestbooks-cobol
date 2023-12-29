@@ -18,13 +18,13 @@ Patrick   Ingle           40.0 12.0 $480.00  $78.72  $33.60  $29.76     $**337.9
 to compile,
 
 ```
-cobc -x paychecks.con
+cobc -x paycheck.cob
 ```
 
 to execute,
 
 ```
-./paychecks
+./paycheck
 ```
 
 the result shown above.
