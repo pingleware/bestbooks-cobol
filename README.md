@@ -236,9 +236,11 @@ In file [bestbooks_add_entry.cob](bestbooks_add_entry.cob), will add a new entry
 2023-01-05 00002 Supplies        Purchase of office supplies    $  000.00     $  010.00
 2023-01-10 00003 Cash            Sale of goods                  $  050.00     $  000.00
 2023-12-31 00004 Equipment       Purchase of equipment          $  000.00     $  100.00
-2023122917 00001 Cash            Investor Deposit               $  100.00     $  000.00
-2023122917 00001 Cash            Investor Deposit               $  100.00     $  000.00
-                                                                $  350.00     $  110.00
+2023-12-29 00005 Cash            Investor Deposit               $  100.00     $  000.00
+2023-12-29 00006 Cash            Founder Deposit                $1,000.00     $  000.00
+2023-12-29 00007 Cash            Sales                          $  500.00     $  000.00
+2023-12-29 00008 Cash            Rent                           $  000.00     $  500.00
+                                                                $1,750.00     $  610.00
 ```
 
 Obtaining the current date and formatting in the form of YYYY-MM-DD involves declaring working variables,
