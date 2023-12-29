@@ -62,6 +62,7 @@
        PROCESS-LINE.
            READ TIMECARDS INTO TIMECARD
                AT END MOVE "T" TO END-FILE.
+           
            IF NOT EOF THEN
                PERFORM COMPUTE-GROSS-PAY
                PERFORM COMPUTE-FED-TAX
