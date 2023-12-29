@@ -109,7 +109,9 @@ The manual is available at [https://edoras.sdsu.edu/doc/opencobol.pdf ](https://
 
 # Bestbooks for COBOL
 
- The first example is reading from a LEDGER file and display the contents of the LEDGER. To build the executable,
+### Reading the Ledger
+
+The first example is reading from a LEDGER file and display the contents of the LEDGER. To build the executable,
 
 ```
 2023-01-0100001Cash           0100000000  Initial deposit           
@@ -224,6 +226,10 @@ the output will result in,
 2023-12-31 00004 Equipment       Purchase of equipment          $  000.00     $  100.00
                                                                 $  150.00     $  110.00
 ```
+
+### Adding an entry to the Ledger
+
+In file [bestbooks_add_entry.cob](bestbooks_add_entry.cob), will add a new entry to the ledger file of [LEDGER.DAT](LEDGER.DAT),
 
 
 ## GNUCobol Command Line Options

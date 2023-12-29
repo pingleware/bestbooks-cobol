@@ -48,7 +48,7 @@
            PERFORM INITIALIZE-PROGRAM.
            PERFORM PROCESS-LINE WITH TEST BEFORE UNTIL EOF
            PERFORM CLEAN-UP.
-           STOP RUN.
+          
        INITIALIZE-PROGRAM.
             OPEN INPUT LEDGER.
        PROCESS-LINE.
@@ -80,4 +80,5 @@
             .
        CLEAN-UP.
             CLOSE LEDGER.
+            STOP RUN.
        END PROGRAM BESTBOOKS.
