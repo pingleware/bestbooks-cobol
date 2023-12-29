@@ -10,7 +10,7 @@ To build the COBOL files, use the script,
 ./build.sh FILENAME
 ```
 
-where FILENAME is the COBOL root filename.
+where FILENAME is the COBOL root filename. The executable file will reside in the dist/ directory.
 
 ## Working Example
 
