@@ -1,0 +1,4 @@
+*.dylib
+hello
+dist/*
+!dist/.gitkeep

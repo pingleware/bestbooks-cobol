@@ -18,13 +18,13 @@ Patrick   Ingle           40.0 12.0 $480.00  $78.72  $33.60  $29.76     $**337.9
 to compile,
 
 ```
-cobc -x paycheck.cob
+cobc -x paycheck.cob -o dist/paycheck
 ```
 
 to execute,
 
 ```
-./paycheck
+./dist/paycheck
 ```
 
 the result shown above.
@@ -74,6 +74,11 @@ Patrick   Ingle           40.0 12.0 $  480.00  $78.72  $33.60  $29.76     $**337
 ```
 
 The program with the fix is [paycheck_fixed.cob](paycheck_fixed.cob).
+
+```
+cobc -x paycheck_fixed.cob -o dist/paycheck_fixed 
+```
+
 
 # Open Cobol
 
