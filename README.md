@@ -232,6 +232,8 @@ the output will result in,
 In file [bestbooks_add_entry.cob](bestbooks_add_entry.cob), will add a new entry to the ledger file of [LEDGER.DAT](LEDGER.DAT), and using [bestbooks_list_ledger.cob](bestbooks_list_ledger.cob), 
 
 ```
+   DATE     SEQ      ACCOUNT              DESCRIPTION             DEBIT        CREDIT  
+---------- ----- --------------- ------------------------------ ---------     ---------
 2023-01-01 00001 Cash            Initial deposit                $  100.00     $  000.00
 2023-01-05 00002 Supplies        Purchase of office supplies    $  000.00     $  010.00
 2023-01-10 00003 Cash            Sale of goods                  $  050.00     $  000.00
@@ -240,6 +242,7 @@ In file [bestbooks_add_entry.cob](bestbooks_add_entry.cob), will add a new entry
 2023-12-29 00006 Cash            Founder Deposit                $1,000.00     $  000.00
 2023-12-29 00007 Cash            Sales                          $  500.00     $  000.00
 2023-12-29 00008 Cash            Rent                           $  000.00     $  500.00
+                                                                =========     =========
                                                                 $1,750.00     $  610.00
 ```
 
